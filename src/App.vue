@@ -1,18 +1,21 @@
 <script setup>
-import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
+import { RouterLink, RouterView } from 'vue-router';
+import HelloWorld from './components/HelloWorld.vue';
+import { useAuthStore } from '@/stores/user';
+
+const authStore = useAuthStore(); // Inicializa a store de autenticação
 </script>
 
 <template>
   <header>
-    
     <div class="wrapper">
       <HelloWorld msg="HELL NO!" />
-
       <nav>
         <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/login">Login</RouterLink>
+        <RouterLink v-if="!authStore.isAuthenticated" to="/login">Login</RouterLink><RouterLink v-if="isAuthenticated" to="/shop">Shop</RouterLink>
         <RouterLink to="/about">About</RouterLink>
+        <RouterLink v-if="authStore.isAuthenticated" to="/shop">Cart</RouterLink>
+        <button v-if="authStore.isAuthenticated" @click="authStore.logout">Logout</button>
       </nav>
     </div>
   </header>
