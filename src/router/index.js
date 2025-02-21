@@ -22,6 +22,7 @@ const routes =[
     },
     { 
     path: '/hlogin',
+    name: 'hlogin',
     component: HloginView,
     beforeEnter: (to, from, next) => {
       const authStore = useAuthStore();
