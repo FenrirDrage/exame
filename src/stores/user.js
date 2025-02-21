@@ -23,6 +23,7 @@ export const useAuthStore = defineStore('auth', {
     },
     logout() {
       this.user = null;
+      router.push({ name: '/' });
     },
   },
   getters:{

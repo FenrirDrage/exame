@@ -12,9 +12,10 @@ const authStore = useAuthStore(); // Inicializa a store de autenticação
       <HelloWorld msg="HELL NO!" />
       <nav>
         <RouterLink to="/">Home</RouterLink>
-        <RouterLink v-if="!authStore.isAuthenticated" to="/login">Login</RouterLink><RouterLink v-if="isAuthenticated" to="/shop">Shop</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-        <RouterLink v-if="authStore.isAuthenticated" to="/shop">Cart</RouterLink>
+        <RouterLink v-if="!authStore.isAuthenticated" to="/login">Login</RouterLink>
+        <RouterLink v-if="authStore.isAuthenticated" to="/shop">Shop</RouterLink>
+        <RouterLink v-if="authStore.isAuthenticated" to="/hlogin">User</RouterLink>
+        <RouterLink to="/about">About</RouterLink>        
         <button v-if="authStore.isAuthenticated" @click="authStore.logout">Logout</button>
       </nav>
     </div>
